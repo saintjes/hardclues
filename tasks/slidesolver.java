@@ -145,6 +145,7 @@ public class slidesolver {
         System.out.printf("Original steps found: %d",steps.size());
         ArrayDeque<String> reduced = reduceSteps();
         System.out.printf("Steps found after reduction: %d",reduced.size());
+        System.out.println(reduced);
         Files.write(Paths.get("output.txt"), reduced, StandardOpenOption.CREATE);
     }
     //reduce steps

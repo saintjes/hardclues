@@ -18,11 +18,7 @@ import java.util.List;
 public class puzzlebox extends task {
     static List textureidshuffle = new ArrayList();
     static List textureidcorrect = new ArrayList();
-    static List textureidcorrect1 = new ArrayList();
-    static List textureidcorrect2 = new ArrayList();
-    static List textureidcorrect3 = new ArrayList();
-    static List textureidcorrect4 = new ArrayList();
-    static List textureidcorrect5 = new ArrayList();
+
     public puzzlebox(ClientContext ctx) {
         super(ctx);
     }
@@ -118,31 +114,6 @@ public class puzzlebox extends task {
         int cc23 = ctx.widgets.widget(1931).component(16).component(23).textureId() - cc00 +1;
         int cc24 = ctx.widgets.widget(1931).component(16).component(24).textureId() +1;
 
-        textureidcorrect1.add(cc0);
-        textureidcorrect1.add(cc1);
-        textureidcorrect1.add(cc2);
-        textureidcorrect1.add(cc3);
-        textureidcorrect1.add(cc4);
-        textureidcorrect2.add(cc5);
-        textureidcorrect2.add(cc6);
-        textureidcorrect2.add(cc7);
-        textureidcorrect2.add(cc8);
-        textureidcorrect2.add(cc9);
-        textureidcorrect3.add(cc10);
-        textureidcorrect3.add(cc11);
-        textureidcorrect3.add(cc12);
-        textureidcorrect3.add(cc13);
-        textureidcorrect3.add(cc14);
-        textureidcorrect4.add(cc15);
-        textureidcorrect4.add(cc16);
-        textureidcorrect4.add(cc17);
-        textureidcorrect4.add(cc18);
-        textureidcorrect4.add(cc19);
-        textureidcorrect5.add(cc20);
-        textureidcorrect5.add(cc21);
-        textureidcorrect5.add(cc22);
-        textureidcorrect5.add(cc23);
-        textureidcorrect5.add(cc24);
 
         textureidcorrect.add(cc0);
         textureidcorrect.add(cc1);
