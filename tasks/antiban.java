@@ -5,6 +5,7 @@ import org.powerbot.script.Condition;
 import org.powerbot.script.Random;
 import org.powerbot.script.Tile;
 import org.powerbot.script.rt6.*;
+import org.powerbot.script.rt6.Component;
 
 import java.awt.*;
 
@@ -20,8 +21,26 @@ public class antiban extends task {
       if (HOUNDAREATILE.distanceTo(ctx.players.local()) < 10 && ctx.players.local().inCombat()  ){
           return true;
       } else {return false;}
-
     }
+
+    private float getOffScreenX() {
+        if (Random.nextBoolean()) {
+            final float width = ctx.game.getViewport().width;
+            return width + Random.nextInt(20, 50);
+        } else {
+            return 0 - Random.nextInt(20, 50);
+        }
+    }
+
+    private float getOffScreenY() {
+        if (Random.nextBoolean()) {
+            final float height = ctx.game.getViewport().height;
+            return height + Random.nextInt(20, 50);
+        } else {
+            return 0 - Random.nextInt(20, 50);
+        }
+    }
+
 
     @Override
     public boolean activate() {
@@ -65,8 +84,9 @@ public class antiban extends task {
                 ctx.input.move(x, y);
                 break;
             case 4:
-                System.out.println("Antipattern-Case4:Turning Camera to nearest player");
-                ctx.camera.turnTo(ctx.players.select().nearest().poll());
+                System.out.println("Antipattern-Case4:Random Turning Camera");
+                ctx.camera.angleTo(Random.nextInt(0, 360));
+                ctx.camera.pitch(Random.nextInt(21, 39));
                 break;
             case 5:
                 System.out.println("Antipattern-Case5:Random mouse moving");
@@ -132,6 +152,26 @@ public class antiban extends task {
                 System.out.println("Antipattern-Case10:Examine Hound");
                 Npc npc = ctx.npcs.select().nearest().poll();
                 npc.interact("Examine", npc.name());
+                break;
+            case 11:
+                System.out.println("Antipattern-Case11:Check random skills xp");
+                final int skillId = 13;
+
+                final Component skillsWindowComponent = ctx.widgets.component(1466, 11);
+                final Component randomSkillComponent = skillsWindowComponent.component(skillId);
+
+                ctx.input.move(randomSkillComponent.nextPoint());
+                Condition.sleep(Random.nextInt(1500, 2000));
+                ctx.input.move(Random.nextInt(100, 4000), Random.nextInt(100, 4000));
+                break;
+            case 12:
+                System.out.println("Antipattern-Case12:long afk 50-130 sec");
+                int X = Math.round(getOffScreenX());
+                int Y = Math.round(getOffScreenY());
+                ctx.input.move(X, Y);
+                ctx.input.defocus();
+                Condition.sleep(Random.nextInt(50000, 130000));
+                ctx.input.focus();
                 break;
 
             default:
